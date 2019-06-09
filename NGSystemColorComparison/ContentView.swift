@@ -8,16 +8,38 @@
 
 import SwiftUI
 
+extension Color {
+    init(uiColor: UIColor) {
+        self.init(red: Double(uiColor.red), green: Double(uiColor.green), blue: Double(uiColor.blue))
+    }
+}
+
 struct ContentView : View {
+    let colors: [SystemColor]
     var body: some View {
-        Text("Hello World")
+        List(colors.identified(by: \.name)) { color in
+            HStack {
+                Color(uiColor: color.color)
+                    .frame(width: 30, height: 30)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(color.name)
+                    HStack {
+                        Text(color.hexDescription)
+                            .font(.subheadline)
+                    }
+                }
+            }
+        }
     }
 }
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView(colors: SystemColor.colors)
+        }
     }
 }
 #endif

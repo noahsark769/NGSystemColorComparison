@@ -21,9 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Use a UIHostingController as window root view controller
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = UIHostingController(rootView: ContentView())
+        window.rootViewController = UIHostingController(rootView: ContentView(colors: SystemColor.colors))
         self.window = window
         window.makeKeyAndVisible()
+
+        print(SystemColor.extensionDescription)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
