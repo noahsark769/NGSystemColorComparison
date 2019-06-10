@@ -25,7 +25,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
 
-        print(SystemColor.extensionDescription)
+//        print(SystemColor.extensionDescription)
+        let encoder = JSONEncoder()
+        let data = try! encoder.encode(SystemColor.colors.map { $0.codableRepresentation })
+        print(String(data: data, encoding: .utf8)!)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

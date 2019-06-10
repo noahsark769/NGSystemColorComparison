@@ -49,11 +49,36 @@ extension UIColor {
         let string = String(format:"#%08x", rgb)
         return string
     }
+
+    func toRGBAString() -> String {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        return "rgba(\(r*255), \(g*255), \(b*255), \(a))"
+    }
+}
+
+struct CodableSystemColor: Codable {
+    let name: String
+    let hexString: String
+    let rgbaString: String
 }
 
 struct SystemColor {
     let name: String
     let color: UIColor
+
+    var codableRepresentation: CodableSystemColor {
+        return CodableSystemColor(
+            name: self.name,
+            hexString: self.color.toHexString(),
+            rgbaString: self.color.toRGBAString()
+        )
+    }
 
     var hexDescription: String {
         return self.color.toHexString()
