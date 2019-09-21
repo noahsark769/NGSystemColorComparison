@@ -17,7 +17,7 @@ extension Color {
 struct ContentView : View {
     let colors: [SystemColor]
     var body: some View {
-        List(colors.identified(by: \.name)) { color in
+        List(colors, id: \.name) { color in
             HStack {
                 Color(uiColor: color.color)
                     .frame(width: 30, height: 30)

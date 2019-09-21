@@ -130,7 +130,6 @@ struct SystemColor {
         SystemColor(name: "darkText", color: .darkText),
         SystemColor(name: "lightText", color: .lightText),
         SystemColor(name: "systemBlue", color: .systemBlue),
-        SystemColor(name: "systemBrown", color: .systemBrown),
         SystemColor(name: "systemGreen", color: .systemGreen),
         SystemColor(name: "systemIndigo", color: .systemIndigo),
         SystemColor(name: "systemOrange", color: .systemOrange),
